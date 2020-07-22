@@ -27,38 +27,23 @@ class MainActivity : AppCompatActivity() {
         recyclerview.layoutManager=LinearLayoutManager(this)
         val firebaseDatabase=FirebaseDatabase.getInstance()
         val databaseReferenc=firebaseDatabase.getReference("Data")
-
-
-
-
-    }
-
-
-     override fun onStart() {
-        super.onStart()
-
-     val firebaseRecyclerAdapter= object : FirebaseRecyclerAdapter<Modell, MainHolder>(
+        val firebaseRecyclerAdapter= object : FirebaseRecyclerAdapter<Modell, MainHolder>(
             Modell::class.java,
             R.layout.row,
             MainHolder::class.java,
-            FirebaseDatabase.getInstance().getReference("Data")
-
-        )
-        {
+            FirebaseDatabase.getInstance().getReference("Data")) {
             override fun populateViewHolder(p0: MainHolder, p1: Modell, p2: Int) {
 
                 p0.setDetails(applicationContext,p1.getTitle(),p1.getDescription(),p1.getImage())
 
-
-
             }
         }
 
+        recyclerview.adapter=firebaseRecyclerAdapter
 
-
-
-        }
+    }
 
 
 
 }
+
