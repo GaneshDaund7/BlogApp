@@ -5,9 +5,11 @@ buildscript {
     repositories {
         google()
         jcenter()
+
         
     }
     dependencies {
+
         classpath 'com.android.tools.build:gradle:3.5.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:4.2.0'
@@ -20,10 +22,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+        apply plugin: 'maven'
+
+        mavenCentral()
         
     }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }

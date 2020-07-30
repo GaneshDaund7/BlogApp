@@ -1,9 +1,11 @@
 package com.example.myblogapp
 
 import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
@@ -17,5 +19,20 @@ class MainHolder(internal var view: View):RecyclerView.ViewHolder(view) {
         textTitle.setText(title)
         TextDes.setText(description)
         Picasso.get().load(image).into(imageView);
+
+
     }
+
+    init {
+        view.setOnClickListener { v: View ->
+
+
+
+
+            val i=Intent(v.context, PaymentGateway::class.java)
+            itemView.context.startActivity(i)
+        }
+
+    }
+
 }
